@@ -1,0 +1,4 @@
+<map id="map" longitude="{{lng}}" latitude="{{lat}}" show-location="{{true}}" scale="{{scale}}"/>
+<image class="scan-btn" src="/images/qrcode.png" mode="aspectFill" catch:tap="scan" />
+<image class="position-btn" src="/images/img1.png" mode="aspectFill" catch:tap="moveToCurrent" />
+<image class="position-btn feedback-btn" src="/images/warn.png" mode="aspectFill" catch:tap="toFeedback" />

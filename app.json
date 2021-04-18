@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/bike-info/bike-info",
+    "pages/wallet/wallet",
+    "pages/person/person",
+    "pages/feedback/feedback",
+    "pages/riding-record/riding-record"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "共享单车",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取您的骑行位置信息"
+    }
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#1678ff",
+    "list": [
+      {
+        "iconPath": "images/tabbar/home.png",
+        "selectedIconPath": "images/tabbar/home-active.png",
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "iconPath": "images/tabbar/person.png",
+        "selectedIconPath": "images/tabbar/person-active.png",
+        "pagePath": "pages/person/person",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

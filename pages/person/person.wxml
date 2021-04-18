@@ -1,0 +1,65 @@
+<view class="user-info">
+  <open-data type="userAvatarUrl" lang="zh_CN" class="user-avatar"/>
+  <view class="user-mess">
+    <open-data type="userNickName" lang="zh_CN" class="user-name"/>
+    <view class="user-location">
+      <open-data type="userProvince" lang="zh_CN"/>
+      <text space="nbsp"> - </text>
+      <open-data type="userCity" lang="zh_CN"/>
+      <text style="margin-left: 20rpx">骑行总里程：</text>
+      <text class="theme-color__text">0km</text>
+    </view>
+  </view>
+</view>
+
+
+<view class="weui-panel__bd">
+  <view class="weui-cells">
+    <navigator url="/pages/riding-record/riding-record" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"><image class="user-icon" src="/images/ride.png"></image></view>
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>骑行记录</view>
+      </view>
+      <text class="weui-cell__ft"></text>
+    </navigator>
+  </view>
+</view>
+
+
+<view class="weui-panel__bd">
+  <view class="weui-cells">
+    <navigator url="/pages/riding-record/riding-record" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"><image class="user-icon" src="/images/deposit.png"></image></view>
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>缴纳押金</view>
+      </view>
+      <text class="weui-cell__ft"></text>
+    </navigator>
+    <navigator url="/pages/riding-record/riding-record" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"><image class="user-icon" src="/images/vip.png"></image></view>
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>充值会员</view>
+      </view>
+      <text class="weui-cell__ft"></text>
+    </navigator>
+    <navigator url="/pages/wallet/wallet" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"><image class="user-icon" src="/images/balance.png"></image></view>
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>我的余额</view>
+      </view>
+      <text class="weui-cell__ft"></text>
+    </navigator>
+  </view>
+</view>
+
+<view class="weui-panel__bd">
+  <view class="weui-cells">
+    <navigator url="/pages/riding-record/riding-record" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__hd"><image class="user-icon" src="/images/support.png"></image></view>
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>联系客服</view>
+      </view>
+      <text class="weui-cell__ft"></text>
+    </navigator>
+  </view>
+</view>

@@ -1,0 +1,60 @@
+.user-info {
+  width: 100%;
+  height: 200rpx;
+  background: #fff;
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding-bottom: 30rpx;
+}
+
+.user-avatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #f0f0f0;
+  margin-right: 50rpx;
+}
+
+.user-mess {
+  flex: 1;
+}
+.user-name {
+  display: block;
+  width: 100%;
+  font-size: 40rpx;
+  color: #000;
+  margin-bottom: 10rpx;
+}
+
+.user-location {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.user-distance {
+  padding-top: 8rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.weui-cells::after,
+.weui-cells::before {
+  display: none;
+}
+
+.weui-cell {
+  padding: 30rpx 15rpx;
+  color: #2c2c2c;
+}
+
+.user-icon {
+  width: 50rpx;
+  height: 50rpx;
+  display: block;
+  margin-right: 10px;
+}
