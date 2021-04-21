@@ -58,3 +58,14 @@
   display: block;
   margin-right: 10px;
 }
+
+.contact {
+  background: #fff;
+  line-height: normal;
+  text-align: left;
+  border: none;
+}
+
+.contact::after {
+  border: none;
+}

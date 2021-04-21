@@ -54,12 +54,19 @@
 
 <view class="weui-panel__bd">
   <view class="weui-cells">
-    <navigator url="/pages/riding-record/riding-record" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <button open-type="contact" class="contact weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd"><image class="user-icon" src="/images/support.png"></image></view>
       <view class="weui-cell__bd weui-cell_primary">
-        <view>联系客服</view>
+        <view>在线客服</view>
       </view>
-      <text class="weui-cell__ft"></text>
-    </navigator>
+      <text class="weui-cell__ft" />
+    </button>
+    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" bind:tap="openSupport">
+      <view class="weui-cell__hd"><image class="user-icon" src="/images/call.png"></image></view>
+      <view class="weui-cell__bd weui-cell_primary">
+        <view>电话客服</view>
+      </view>
+      <text class="weui-cell__ft" />
+    </view>
   </view>
 </view>

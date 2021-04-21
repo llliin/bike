@@ -5,7 +5,8 @@
     "pages/wallet/wallet",
     "pages/person/person",
     "pages/feedback/feedback",
-    "pages/riding-record/riding-record"
+    "pages/riding-record/riding-record",
+    "pages/opening/opening"
   ],
   "window": {
     "backgroundTextStyle": "light",

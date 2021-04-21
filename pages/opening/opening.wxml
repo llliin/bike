@@ -1,0 +1,11 @@
+<view class="preview-bike">
+  <image class="preview-bike__img" src="/images/bike-preview.png" />
+</view>
+<text class="opening-text">正在开锁</text>
+
+<view class="opening-tips">
+  <text>1.如果长时间无法开锁，请尝试拨动单车锁扭；</text>
+  <text>2.若骑行期间发生损坏，则按照相应的物价进行赔偿；</text>
+  <text>3.单车骑行期间请准守当地的交通规则，任何交通违法行为由您本人承担；</text>
+  <text>4.单车骑行结束后，请正确停放单车到指定位置。</text>
+</view>

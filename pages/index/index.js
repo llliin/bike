@@ -69,7 +69,7 @@ Page({
       success: async res => {
         if (res.result.includes(noSign)) {
           const bikeNo = res.result.replace(noSign, '');
-          wx.navigateTo({ url: '/pages/bike-info/bike-info?no=' + bikeNo });
+          wx.navigateTo({ url: '/pages/opening/opening?no=' + bikeNo });
         } else {
           helper.$alert({ title: '提示', content: '请扫描ZZL单车二维码' });
         }

@@ -1,0 +1,23 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/opening/opening",
+          "pathName": "pages/opening/opening",
+          "query": "no=zzl000003",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
