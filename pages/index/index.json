@@ -2,5 +2,9 @@
   "disableScroll": true,
   "navigationBarBackgroundColor": "#FFFFFF",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "共享单车"
+  "navigationBarTitleText": "共享单车",
+  "usingComponents": {
+    "bike-map": "/components/bike-map/bike-map.js",
+    "bike-map": "/components/bike-map/bike-map"
+  }
 }

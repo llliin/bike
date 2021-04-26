@@ -1,0 +1,3 @@
+<view class="time-clock">
+  <text>{{hours}}:{{minutes}}:{{seconds}}</text>
+</view>

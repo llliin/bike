@@ -4,7 +4,7 @@ const mapKey = 'RQBBZ-A5TCJ-UT4FD-KBEGP-DDI4S-EEFZM';
 var systemInfo = null;
 
 wx.getSystemInfo({
-  success: function(res) {
+  success: function (res) {
     systemInfo = res;
   },
 });
@@ -32,7 +32,7 @@ class CommonHelper {
       }, time);
     });
     return q;
-  };
+  }
 
   /**
    * @description loading弹窗
@@ -44,7 +44,7 @@ class CommonHelper {
       title: str,
       mask: mask,
     });
-  };
+  }
 
   /**
    * @description 关闭loading弹窗
@@ -54,10 +54,10 @@ class CommonHelper {
   /**
    * @description modal模态弹窗
    * @param {Object} options 配置项
-   * @return {Promise}
+   * @return {Promise<boolean>}
    */
   $confirm(options) {
-    let q = new Promise((r, j) => {
+    let q = new Promise(r => {
       wx.showModal({
         title: options.title || '提示',
         content: options.content || '',
@@ -66,16 +66,13 @@ class CommonHelper {
         cancelText: options.cancelText || '取消',
         cancelColor: options.cancelColor || '#000000',
         success: e => {
-          if (e.confirm) r();
-          else j();
+          if (e.confirm) r(true);
+          else r(false);
         },
       });
     });
-
-    q.catch(() => {
-    });
     return q;
-  };
+  }
 
   /**
    * @description alert弹窗
@@ -97,11 +94,12 @@ class CommonHelper {
       });
     });
 
-    q.then(() => {
-    }, () => {
-    });
+    q.then(
+      () => {},
+      () => {}
+    );
     return q;
-  };
+  }
 
   /**
    * @description ActionSheet模态弹窗
@@ -124,7 +122,7 @@ class CommonHelper {
     });
 
     return q;
-  };
+  }
 
   /**
    * @description 获取图片对应宽度的高度
@@ -138,13 +136,13 @@ class CommonHelper {
           let percent = e.width / e.height;
           r((width / percent).toFixed(2));
         },
-        fail: (e) => {
+        fail: e => {
           j(e);
         },
       });
     });
     return q;
-  };
+  }
 
   /**
    * @description 登录接口
@@ -153,7 +151,7 @@ class CommonHelper {
   $login() {
     let q = new Promise((r, j) => {
       wx.login({
-        success: (e) => {
+        success: e => {
           r(e.code);
         },
         fail: () => {
@@ -162,7 +160,7 @@ class CommonHelper {
       });
     });
     return q;
-  };
+  }
 
   /**
    * @description 获取定位信息
@@ -175,12 +173,17 @@ class CommonHelper {
         type: 'gcj02',
         success: e => {
           wx.request({
-            url: 'https://apis.map.qq.com/ws/geocoder/v1/?location=' + e.latitude + ',' + e.longitude + '&key=' +
+            url:
+              'https://apis.map.qq.com/ws/geocoder/v1/?location=' +
+              e.latitude +
+              ',' +
+              e.longitude +
+              '&key=' +
               mapKey,
             success: res => {
               r(res.data);
             },
-            fail: (err) => {
+            fail: err => {
               j(err);
             },
             complete: () => {
@@ -188,14 +191,14 @@ class CommonHelper {
             },
           });
         },
-        fail: (err) => {
+        fail: err => {
           this.$close();
           j(err);
         },
       });
     });
     return q;
-  };
+  }
 
   /**
    * @description rpx转px
@@ -204,7 +207,7 @@ class CommonHelper {
   $rpx2px(rpx) {
     let percent = 750 / systemInfo.windowWidth;
     return rpx / percent;
-  };
+  }
 }
 
 const helper = new CommonHelper();

@@ -6,7 +6,9 @@
     "pages/person/person",
     "pages/feedback/feedback",
     "pages/riding-record/riding-record",
-    "pages/opening/opening"
+    "pages/opening/opening",
+    "pages/bike-riding/bike-riding",
+    "pages/deposit/deposit"
   ],
   "window": {
     "backgroundTextStyle": "light",

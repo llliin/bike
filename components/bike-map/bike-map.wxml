@@ -1,0 +1,10 @@
+<map id="map"
+     class="map"
+     longitude="{{lng}}"
+     latitude="{{lat}}"
+     show-location="{{true}}"
+     show-compass="{{true}}"
+     scale="{{scale}}"/>
+
+<image class="position-btn" src="/images/img1.png" mode="aspectFill" catch:tap="moveToCurrent"/>
+<image class="position-btn feedback-btn" src="/images/warn.png" mode="aspectFill" catch:tap="toFeedback"/>

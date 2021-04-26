@@ -18,4 +18,10 @@ export default class UserModel extends BaseModel {
    * @type {Date}
    */
   vip = new Date('1970-01-01');
+
+  /**
+   * 骑行总公里数
+   * @type {number}
+   */
+  trip = 0;
 }

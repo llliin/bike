@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "bike-map": "/components/bike-map/bike-map",
+    "time-clock": "/components/time-clock/time-clock"
+  }
+}

@@ -10,13 +10,21 @@ page {
 }
 
 .theme-color__text {
-  color: #1678ff;
+  color: #1678ff !important;
 }
 
 .theme-color__bg {
-  background-color: #1678ff;
+  background-color: #1678ff !important;
 }
 
 .theme-color__border {
   border-color: #1678ff !important;
+}
+
+.text-color__white {
+  color: #fff !important;
+}
+
+.text-color__black {
+  color: #222 !important;
 }

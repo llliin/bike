@@ -1,0 +1,24 @@
+<view class="map-box">
+  <bike-map hideBikes="{{true}}" />
+</view>
+<view class="riding-info">
+  <view class="riding-time">
+    <text class="riding-text">骑行时间</text>
+    <time-clock time="{{time}}" />
+  </view>
+  <view class="riding-time">
+    <text class="riding-text">单车编号</text>
+    <text class="riding-text">zzl0000001</text>
+  </view>
+  <view class="riding-time">
+    <text class="riding-text">骑行里程</text>
+    <text class="riding-text">11.01km</text>
+  </view>
+  <view class="riding-time">
+    <text class="riding-text">骑行费用</text>
+    <text class="riding-text theme-color__text">￥2.0</text>
+  </view>
+  <view style="padding-top: 10rpx">
+    <button class="theme-color__bg text-color__white" type="primary">结束骑行</button>
+  </view>
+</view>

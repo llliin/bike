@@ -18,7 +18,7 @@ class UserService extends Service {
       // 执行注册
       user.data = [await this.registe()];
     }
-    return user.data[0];
+    return new UserModel().connect(user.data[0]);
   }
 
   /**
@@ -31,6 +31,15 @@ class UserService extends Service {
     const c = await this.collection.add({ data: model.create() });
     model._id_ = c._id;
     return model;
+  }
+
+  /**
+   * 获取当前用户
+   * @return {Promise<void>}
+   */
+  async getCurrentUser() {
+    const { data } = await this.collection.get();
+    return new UserModel().connect(data[0]);
   }
 }
 

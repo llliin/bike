@@ -7,7 +7,7 @@
       <text space="nbsp"> - </text>
       <open-data type="userCity" lang="zh_CN"/>
       <text style="margin-left: 20rpx">骑行总里程：</text>
-      <text class="theme-color__text">0km</text>
+      <text class="theme-color__text">{{userTrip}}km</text>
     </view>
   </view>
 </view>
@@ -28,7 +28,7 @@
 
 <view class="weui-panel__bd">
   <view class="weui-cells">
-    <navigator url="/pages/riding-record/riding-record" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <navigator url="/pages/deposit/deposit" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd"><image class="user-icon" src="/images/deposit.png"></image></view>
       <view class="weui-cell__bd weui-cell_primary">
         <view>缴纳押金</view>
