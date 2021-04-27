@@ -28,3 +28,26 @@ page {
 .text-color__black {
   color: #222 !important;
 }
+
+.theme-button {
+  background-color: #1678ff;
+  border: none;
+  color: #fff;
+  border-radius: 2rpx;
+}
+
+.theme-button::after,
+.theme-button__plain::after {
+  border: none;
+}
+
+.theme-button__plain {
+  background-color: #fff;
+  border: 1rpx #ccc solid;
+  color: #333;
+  border-radius: 2rpx;
+}
+
+.theme-button__plain:active {
+  background-color: #eee;
+}

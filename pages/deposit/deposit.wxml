@@ -1,0 +1,11 @@
+<image class="deposit_bg" src="/images/deposit_bg.png" mode="aspectFit" />
+
+<view class="deposit_view" wx:if="{{hasDeposit}}">
+  <text class="deposit-text theme-color__text">您已缴纳押金</text>
+  <button class="theme-button__plain" loading="{{loading}}" disabled="{{loading}}" bind:tap="postDeposit" data-state="{{false}}">退还押金(￥200)</button>
+</view>
+
+<view class="deposit_view" wx:else>
+  <text class="deposit-text theme-color__text">您还未缴纳押金，缴纳押金后可开启骑行之旅</text>
+  <button class="theme-button" loading="{{loading}}" disabled="{{loading}}" bind:tap="postDeposit" data-state="{{true}}">缴纳押金(￥200)</button>
+</view>

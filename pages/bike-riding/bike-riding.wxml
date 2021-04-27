@@ -11,14 +11,14 @@
     <text class="riding-text">zzl0000001</text>
   </view>
   <view class="riding-time">
-    <text class="riding-text">骑行里程</text>
-    <text class="riding-text">11.01km</text>
+    <text class="riding-text">开始时间</text>
+    <text class="riding-text">2021/04/24 18:32</text>
   </view>
   <view class="riding-time">
     <text class="riding-text">骑行费用</text>
     <text class="riding-text theme-color__text">￥2.0</text>
   </view>
   <view style="padding-top: 10rpx">
-    <button class="theme-color__bg text-color__white" type="primary">结束骑行</button>
+    <button class="theme-button">结束骑行</button>
   </view>
 </view>

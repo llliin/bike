@@ -1,8 +1,11 @@
 Page({
   timer: null,
   data: {
-    startTime: Date.now(),
+    startTime: 0,
     time: 0,
+  },
+  onLoad() {
+    this.data.startTime = Date.now();
   },
   onShow() {
     this.setData(
@@ -13,6 +16,11 @@ Page({
     );
   },
   onHide() {
+    clearTimeout(this.timer);
+    this.timer = null;
+  },
+
+  onUnload() {
     clearTimeout(this.timer);
     this.timer = null;
   },

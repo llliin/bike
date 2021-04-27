@@ -13,16 +13,15 @@ class CommonHelper {
   /**
    * @description toast弹窗
    * @param {String} str 提示语
-   * @param {Boolean} isSuccess 是否显示对勾
+   * @param {Boolean} icon 显示的图标
    * @param {Boolean} mask 是否为遮罩模式
    * @param {Number} time 显示时间
    * @return {Promise}
    */
-  $toast(str = '', isSuccess = false, mask = false, time = 1500) {
-    let q = new Promise((r, j) => {
+  $toast(str = '', icon = 'none', mask = false, time = 1500) {
+    let q = new Promise(r => {
       wx.showToast({
-        icon: 'none',
-        image: isSuccess ? '/static/icon/success.png' : undefined,
+        icon: icon,
         title: str,
         duration: time,
         mask: mask,

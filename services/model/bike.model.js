@@ -1,5 +1,9 @@
 import BaseModel from './base.model';
+import GeoModel from './geo.model';
 
+/**
+ * 单车
+ */
 export default class BikeModel extends BaseModel {
   /**
    * 单车信息
@@ -14,16 +18,10 @@ export default class BikeModel extends BaseModel {
   bikeNo = 'zzl000000';
 
   /**
-   * 经度
-   * @type {number}
+   * 单车位置
+   * @type {GeoModel}
    */
-  lng = 0;
-
-  /**
-   * 纬度
-   * @type {number}
-   */
-  lat = 0;
+  position = new GeoModel();
 
   /**
    * 单车状态 0=损坏；1=空闲；2=占用；3=离线；

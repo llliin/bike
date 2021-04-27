@@ -1,4 +1,5 @@
 import helper from './helper';
+import userService from '../services/user';
 
 const app = getApp();
 /**
@@ -10,6 +11,14 @@ export function sleep(t) {
   return new Promise(r => setTimeout(r, t));
 }
 
+/**
+ * 同步用户信息
+ * @return {Promise<UserModel>}
+ */
+export async function syncUserInfo() {
+  app.globalData.userInfo = await userService.getCurrentUser();
+  return app.globalData.userInfo;
+}
 /**
  * 检查用户押金状态
  */

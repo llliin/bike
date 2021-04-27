@@ -1,6 +1,4 @@
-import userService from '../../services/user';
-
-const app = getApp();
+import { syncUserInfo } from '../../utils/utils';
 
 Page({
   data: { userTrip: 0 },
@@ -18,8 +16,8 @@ Page({
    * @return {Promise<void>}
    */
   async syncUserInfo() {
-    app.globalData.userInfo = await userService.getCurrentUser();
-    this.setData({ userTrip: app.globalData.userInfo.trip }, () => {
+    const data = await syncUserInfo();
+    this.setData({ userTrip: data.trip }, () => {
       wx.stopPullDownRefresh();
     });
   },

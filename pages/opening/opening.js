@@ -1,6 +1,7 @@
 import bikeService from '../../services/bike';
 import helper from '../../utils/helper';
 import { sleep } from '../../utils/utils';
+import userService from "../../services/user";
 
 const app = getApp();
 
@@ -13,7 +14,7 @@ Page({
     // 如果此单车处于空闲状态，跳转骑行页面
     if (
       bikeInfo.bikeState === 1 &&
-      (await bikeService.startRiding(bikeInfo._id))
+      (await userService.startRiding(bikeInfo._id))
     ) {
       app.globalData.currentBike = bikeInfo;
       wx.redirectTo({ url: '/pages/bike-riding/bike-riding' });

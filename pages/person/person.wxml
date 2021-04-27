@@ -6,8 +6,8 @@
       <open-data type="userProvince" lang="zh_CN"/>
       <text space="nbsp"> - </text>
       <open-data type="userCity" lang="zh_CN"/>
-      <text style="margin-left: 20rpx">骑行总里程：</text>
-      <text class="theme-color__text">{{userTrip}}km</text>
+      <text style="margin-left: 20rpx">骑行次数：</text>
+      <text class="theme-color__text">{{userTrip}}次</text>
     </view>
   </view>
 </view>

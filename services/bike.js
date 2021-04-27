@@ -13,9 +13,9 @@ class BikeService extends Service {
   async getBikes() {
     const { data } = await this.collection
       .limit(30)
-      .field({ lat: true, lng: true })
+      .field({ position: true })
       .get();
-    return data.map(e => new BikeModel().connect(e));
+    return data.map(e => new BikeModel().connect(e.position));
   }
 
   /**
@@ -34,7 +34,6 @@ class BikeService extends Service {
    * @return {Promise<boolean>}
    */
   async startRiding(bikeId) {
-    return true;
     try {
       const { stats } = await this.collection
         .doc(bikeId)

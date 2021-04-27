@@ -9,4 +9,16 @@ export default class Service {
   constructor(collectionName) {
     this.collection = db.collection(collectionName);
   }
+
+  /**
+   * 返回当前用户id
+   */
+  getUID() {
+    const app = getApp();
+    if (app.globalData.userInfo._id) {
+      return getApp().globalData.userInfo._id;
+    } else {
+      return wx.getStorageSync('userId');
+    }
+  }
 }

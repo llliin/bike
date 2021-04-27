@@ -20,8 +20,14 @@ export default class UserModel extends BaseModel {
   vip = new Date('1970-01-01');
 
   /**
-   * 骑行总公里数
+   * 骑行次数
    * @type {number}
    */
   trip = 0;
+
+  /**
+   * 用户骑的单车id
+   * @type {BikeModel._id}
+   */
+  ridingBikeId = null;
 }

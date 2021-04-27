@@ -13,3 +13,17 @@
 .position-btn:active {
   opacity: 0.9;
 }
+
+.ridding-tips {
+  position: fixed;
+  top: 20rpx;
+  left: 20rpx;
+  right: 20rpx;
+  z-index: 99;
+  background: rgba(255, 224, 163, 0.8);
+  color: rgba(255, 116, 9, 0.87);
+  font-size: 28rpx;
+  padding: 15rpx 20rpx;
+  box-sizing: border-box;
+  border-radius: 5rpx;
+}
