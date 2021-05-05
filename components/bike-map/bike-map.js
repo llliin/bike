@@ -49,7 +49,7 @@ Component({
     async updateBikePoint() {
       const bikes = await bikeService.getBikes();
       bikes.forEach(e => {
-        this.markers.push(new BikeMarker(e.lng, e.lat));
+        this.markers.push(new BikeMarker(e.position.lng, e.position.lat));
       });
     },
 

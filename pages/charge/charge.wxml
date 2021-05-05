@@ -1,0 +1,4 @@
+<view class="weui-flex balance">
+  <text>当前余额：</text>
+  <text>0</text>
+</view>

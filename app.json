@@ -11,7 +11,8 @@
     "pages/deposit/deposit",
     "pages/pay/pay",
     "pages/record-detail/record-detail",
-    "pages/vip/vip"
+    "pages/vip/vip",
+    "pages/charge/charge"
   ],
   "window": {
     "backgroundTextStyle": "light",

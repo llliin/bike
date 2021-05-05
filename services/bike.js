@@ -15,7 +15,7 @@ class BikeService extends Service {
       .limit(30)
       .field({ position: true })
       .get();
-    return data.map(e => new BikeModel().connect(e.position));
+    return data.map(e => new BikeModel().connect(e));
   }
 
   /**

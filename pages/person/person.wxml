@@ -38,14 +38,14 @@
     <navigator url="/pages/vip/vip" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd"><image class="user-icon" src="/images/vip.png"></image></view>
       <view class="weui-cell__bd weui-cell_primary">
-        <view>充值会员</view>
+        <view>骑行卡</view>
       </view>
       <text class="weui-cell__ft"></text>
     </navigator>
     <navigator url="/pages/wallet/wallet" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
       <view class="weui-cell__hd"><image class="user-icon" src="/images/balance.png"></image></view>
       <view class="weui-cell__bd weui-cell_primary">
-        <view>我的余额</view>
+        <view>我的钱包</view>
       </view>
       <text class="weui-cell__ft"></text>
     </navigator>
