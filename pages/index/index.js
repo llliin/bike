@@ -63,7 +63,11 @@ Page({
    * 扫描二维码
    */
   async scan() {
-    if (!(await this.checkOrder()) && (await checkUserDeposit())) {
+    if (
+      !(await this.checkOrder()) &&
+      (await checkUserDeposit()) &&
+      this.checkBalance()
+    ) {
       helper.$load('等待扫描结果');
       wx.scanCode({
         onlyFromCamera: true,
@@ -83,5 +87,15 @@ Page({
         },
       });
     }
+  },
+
+  checkBalance() {
+    if (app.globalData.userInfo.balance <= 0) {
+      helper.$confirm({ content: '您的余额不足，请先进行充值' }).then(e => {
+        if (e) wx.navigateTo({ url: '/pages/charge/charge' });
+      });
+      return false;
+    }
+    return true;
   },
 });
