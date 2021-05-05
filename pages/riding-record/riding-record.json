@@ -1,4 +1,7 @@
 {
-  "usingComponents": {
-  }
+  "usingComponents": {},
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "骑行记录",
+  "backgroundTextStyle": "dark",
+  "backgroundColor": "#f3f3f3"
 }

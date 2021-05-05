@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -12,9 +13,15 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/opening/opening",
-          "pathName": "pages/opening/opening",
-          "query": "no=zzl000003",
+          "name": "pages/pay/pay",
+          "pathName": "pages/pay/pay",
+          "query": "orderId=cbddf0af608ab8d204a473d54e482b81",
+          "scene": null
+        },
+        {
+          "name": "pages/vip/vip",
+          "pathName": "pages/vip/vip",
+          "query": "orderId=cbddf0af608ab8d204a473d54e482b81",
           "scene": null
         }
       ]

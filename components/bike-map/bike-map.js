@@ -2,6 +2,7 @@ import { syncUserLocation } from '../../utils/location';
 import UserMarker from '../../map/user-marker';
 import bikeService from '../../services/bike';
 import BikeMarker from '../../map/bike-marker';
+import GeoModel from '../../services/model/geo.model';
 
 const app = getApp();
 
@@ -14,7 +15,7 @@ Component({
     /**
      * 隐藏单车标记
      */
-    hideBikes: { type: Boolean, value: true },
+    hideBikes: { type: Boolean, value: false },
   },
   data: { lng: 0, lat: 0, scale: 16 },
   pageLifetimes: {
@@ -40,6 +41,7 @@ Component({
     async updateUserPoint() {
       const { lat, lng } = await syncUserLocation();
       this.setData({ lng, lat });
+      this.triggerEvent('sync-position', new GeoModel(lat, lng));
       if (!this.data.hideBikes) this.markers.push(new UserMarker(lng, lat));
     },
 

@@ -1,46 +1,84 @@
 import helper from '../../utils/helper';
 import userService from '../../services/user';
 import { noSign } from '../../config';
-import { checkUserDeposit } from '../../utils/utils';
+import { checkUserDeposit, syncUserInfo } from '../../utils/utils';
 
 const app = getApp();
 
 Page({
   data: {
     isRiding: false,
+    lat: 0,
+    lng: 0,
   },
   async onLoad() {
     const user = await userService.login();
     app.globalData.userInfo = user;
-    if (user.ridingBikeId) {
+    checkUserDeposit();
+    this.checkOrder();
+  },
+
+  async onShow() {
+    if (app.globalData.userInfo._id) {
+      app.globalData.userInfo = await syncUserInfo();
+      this.checkOrder();
+    }
+  },
+
+  toRiding() {
+    wx.navigateTo({
+      url:
+        '/pages/bike-riding/bike-riding?orderId=' +
+        app.globalData.userInfo.ridingOrderId,
+    });
+  },
+
+  /**
+   * 检查订单
+   */
+  async checkOrder() {
+    if (app.globalData.userInfo.ridingOrderId) {
       const c = await helper.$confirm({
         content: '您还有一个未完成的骑行订单是否查看？',
         confirmText: '前往页面',
       });
       if (c) this.toRiding();
       this.setData({ isRiding: true });
+      return true;
     }
-    checkUserDeposit();
+    return false;
   },
 
-  toRiding() {
-    wx.navigateTo({ url: '/pages/bike-riding/bike-riding' });
+  /**
+   * 绑定用户的位置
+   * @param ev {{detail:GeoModel}}
+   */
+  bindUserGeo(ev) {
+    this.data.lat = ev.detail.lat;
+    this.data.lng = ev.detail.lng;
   },
 
   /**
    * 扫描二维码
    */
   async scan() {
-    if (await checkUserDeposit()) {
+    if (!(await this.checkOrder()) && (await checkUserDeposit())) {
+      helper.$load('等待扫描结果');
       wx.scanCode({
         onlyFromCamera: true,
         success: async res => {
+          helper.$close();
           if (res.result.includes(noSign)) {
             const bikeNo = res.result.replace(noSign, '');
-            wx.navigateTo({ url: '/pages/opening/opening?no=' + bikeNo });
+            wx.navigateTo({
+              url: `/pages/opening/opening?no=${bikeNo}&lat=${this.data.lat}&lng=${this.data.lng}`,
+            });
           } else {
             helper.$alert({ title: '提示', content: '请扫描ZZL单车二维码' });
           }
+        },
+        fail: () => {
+          helper.$close();
         },
       });
     }

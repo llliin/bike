@@ -1,0 +1,29 @@
+<view class="page__bd">
+  <view class="weui-form-preview" wx:for="{{list}}" wx:key="index" bind:tap="toDetail" data-id="{{item._id}}">
+    <view class="weui-form-preview__hd">
+      <view class="weui-form-preview__item">
+        <label class="weui-form-preview__label">骑行时长 {{item.duration}}</label>
+        <text class="weui-form-preview__value">2元</text>
+      </view>
+    </view>
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+        <label class="weui-form-preview__label">2021-05-07 18:56</label>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="page__bd">
+  <view class="weui-loadmore weui-loadmore_line weui-loadmore_dot" wx:if="{{loadState===0}}">
+    <text class="weui-loadmore__tips"></text>
+  </view>
+  <view class="weui-loadmore" wx:elif="{{loadState===1}}">
+    <view class="weui-primary-loading">
+      <text class="weui-primary-loading__dot"></text>
+    </view>
+    <text class="weui-loadmore__tips">正在加载</text>
+  </view>
+  <view class="weui-loadmore weui-loadmore_line" wx:else>
+    <text class="weui-loadmore__tips">暂无数据</text>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "order-preview": "/components/order-preview/order-preview"
+  },
+  "navigationBarTitleText": "骑行记录"
+}

@@ -1,19 +1,54 @@
+import ridingOrderService from '../../services/riding-order';
+import helper from '../../utils/helper';
+import bikeService from '../../services/bike';
+import { formatTime } from '../../utils/timeUtil';
+
 Page({
   timer: null,
   data: {
-    startTime: 0,
+    id: '',
+    startTime: new Date(),
     time: 0,
+    no: '',
+    orderId: 0,
+    showStart: '',
+    lat: 0,
+    lng: 0,
   },
-  onLoad() {
-    this.data.startTime = Date.now();
+  async onLoad(options) {
+    helper.$load('加载中...', true);
+    const errorHanlde = () => {
+      helper.$close();
+      helper.$toast('获取订单失败', 'error', true).then(() => {
+        wx.redirectTo({ url: '/pages/index/index' });
+      });
+    };
+    const order = await ridingOrderService.getOrder(options.orderId);
+    if (order) {
+      if (order.status === 0) {
+        const bike = await bikeService.getBikeInfoById(order.bikeId);
+        if (bike) {
+          this.setData({
+            id: order._id,
+            startTime: order.startTime,
+            time: Math.floor((Date.now() - order.startTime.getTime()) / 1000),
+            no: bike.bikeNo,
+            orderId: order._id.substring(0, 16),
+            showStart: formatTime(order.startTime),
+          });
+          helper.$close();
+        } else {
+          errorHanlde();
+        }
+      } else {
+        wx.redirectTo({ url: `/pages/pay/pay?orderId=${order._id}` });
+      }
+    } else {
+      errorHanlde();
+    }
   },
   onShow() {
-    this.setData(
-      { time: Math.floor((Date.now() - this.data.startTime) / 1000) },
-      () => {
-        if (this.timer === null) this.startTimer();
-      }
-    );
+    if (this.timer === null) this.startTimer();
   },
   onHide() {
     clearTimeout(this.timer);
@@ -33,5 +68,34 @@ Page({
       this.setData({ time: ++this.data.time });
       this.startTimer();
     }, 1000);
+  },
+
+  /**
+   * 结束骑行
+   */
+  async finishRiding() {
+    helper.$load('', true);
+    const res = await ridingOrderService.finishOrder(
+      this.data.id,
+      this.data.lat,
+      this.data.lng
+    );
+    helper.$close();
+    if (res) {
+      wx.redirectTo({ url: `/pages/pay/pay?orderId=${this.data.id}` });
+    } else {
+      helper.$alert({
+        content: '订单结束失败，请稍后尝试',
+      });
+    }
+  },
+
+  /**
+   * 绑定用户的位置
+   * @param ev {{detail:GeoModel}}
+   */
+  bindUserGeo(ev) {
+    this.data.lat = ev.detail.lat;
+    this.data.lng = ev.detail.lng;
   },
 });

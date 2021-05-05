@@ -29,6 +29,16 @@ class BikeService extends Service {
   }
 
   /**
+   * 获取单车信息
+   * @param bikeId {string} 单车Id
+   * @returns {Promise<BikeModel>}
+   */
+  async getBikeInfoById(bikeId) {
+    const { data } = await this.collection.doc(bikeId).get();
+    return new BikeModel().connect(data);
+  }
+
+  /**
    * 开始骑行，锁定单车
    * @param bikeId {string} 单车Id
    * @return {Promise<boolean>}
@@ -38,6 +48,23 @@ class BikeService extends Service {
       const { stats } = await this.collection
         .doc(bikeId)
         .update({ data: { bikeState: 2 } });
+      return stats.updated === 1;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  /**
+   * 结束骑行
+   * @param bikeId {string} 单车Id
+   * @return {Promise<boolean>}
+   */
+  async finishRiding(bikeId) {
+    try {
+      const { stats } = await this.collection
+        .doc(bikeId)
+        .update({ data: { bikeState: 1 } });
       return stats.updated === 1;
     } catch (e) {
       console.error(e);

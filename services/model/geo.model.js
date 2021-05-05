@@ -13,4 +13,9 @@ export default class GeoModel {
    * @type {number}
    */
   lng = 0;
+
+  constructor(lat, lng) {
+    this.lat = lat;
+    this.lng = lng;
+  }
 }

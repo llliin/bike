@@ -81,7 +81,7 @@ class CommonHelper {
   $alert(options) {
     let q = new Promise((r, j) => {
       wx.showModal({
-        title: '提示',
+        title: options.title || '提示',
         content: options.content || '',
         showCancel: false,
         confirmText: options.btnText || '确定',
@@ -170,25 +170,10 @@ class CommonHelper {
       wx.getLocation({
         geocode: true,
         type: 'gcj02',
-        success: e => {
-          wx.request({
-            url:
-              'https://apis.map.qq.com/ws/geocoder/v1/?location=' +
-              e.latitude +
-              ',' +
-              e.longitude +
-              '&key=' +
-              mapKey,
-            success: res => {
-              r(res.data);
-            },
-            fail: err => {
-              j(err);
-            },
-            complete: () => {
-              this.$close();
-            },
-          });
+        success: async e => {
+          const res = await this.$getPositionInfo(e.latitude, e.longitude);
+          this.$close();
+          r(res);
         },
         fail: err => {
           this.$close();
@@ -197,6 +182,26 @@ class CommonHelper {
       });
     });
     return q;
+  }
+
+  /**
+   * 坐标转化
+   * @param lat
+   * @param lng
+   * @return {Promise<unknown>}
+   */
+  $getPositionInfo(lat, lng) {
+    return new Promise((r, j) => {
+      wx.request({
+        url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${mapKey}`,
+        success: res => {
+          r(res.data);
+        },
+        fail: err => {
+          j(err);
+        },
+      });
+    });
   }
 
   /**

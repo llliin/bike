@@ -1,5 +1,5 @@
 <view class="ridding-tips" wx:if="{{isRiding}}" bind:tap="toRiding">
   <text>您还有一个骑行订单，点击查看</text>
 </view>
-<bike-map />
+<bike-map bind:sync-position="bindUserGeo" />
 <image class="scan-btn" src="/images/qrcode.png" mode="aspectFill" catch:tap="scan" />

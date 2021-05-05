@@ -3,6 +3,10 @@ const db = wx.cloud.database();
 
 export default class Service {
   db = db;
+  /**
+   * @type {DB.DatabaseCommand}
+   */
+  cmd = db.command;
 
   collection = null;
 

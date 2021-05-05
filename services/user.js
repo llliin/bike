@@ -1,7 +1,7 @@
 import Service from './service';
 import UserModel from './model/user.model';
 import bikeService from './bike';
-import ridingRecordService from './riding-record';
+import ridingOrderService from './riding-order';
 
 class UserService extends Service {
   constructor() {
@@ -33,7 +33,7 @@ class UserService extends Service {
   async registe() {
     const model = new UserModel();
     const c = await this.collection.add({ data: model.create() });
-    model._id_ = c._id;
+    model._id = c._id;
     return model;
   }
 
@@ -64,22 +64,67 @@ class UserService extends Service {
 
   /**
    * 用户开始骑行
-   * @return {Promise<boolean>}
+   * @return {Promise<boolean|RidingOrderModel>}
    */
-  async startRiding(bikeId) {
+  async startRiding(bikeId, lat, lng) {
     try {
       // 锁定单车状态
       const bikeState = await bikeService.startRiding(bikeId);
       if (bikeState) {
+        // 创建订单
+        const order = await ridingOrderService.creatOrder(bikeId, lat, lng);
         // 绑定用户的骑行单车
         const { stats } = await this.collection
           .doc(this.getUID())
-          .update({ data: { ridingBikeNo: bikeId } });
-        const {} = ridingRecordService.addRecord();
-        return stats.updated === 1;
+          .update({ data: { ridingOrderId: order._id } });
+        return stats.updated === 1 ? order : false;
       } else {
         return false;
       }
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  /**
+   * 结束骑行
+   * @return {Promise<false | { payment: number }>}
+   */
+  async finishRiding(expense) {
+    try {
+      // 获取用户的当前余额和会员状态
+      const { data } = await this.collection
+        .doc(this.getUID())
+        .field({ vip: true, balance: true })
+        .get();
+      const isVip = data.vip >= new Date();
+      // 更新用户数据字段
+      const { stats } = await this.collection.doc(this.getUID()).update({
+        data: {
+          trip: this.cmd.inc(1),
+          ridingOrderId: null,
+          // 会员到期时间需要大于当前时间
+          balance: isVip ? data.balance : this.cmd.inc(-expense),
+        },
+      });
+      return stats.updated === 1 ? { payment: isVip ? 2 : 1 } : false;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  /**
+   * 开通Vip
+   * @return {Promise<boolean>}
+   */
+  async setVip(util = new Date()) {
+    try {
+      const { stats } = await this.collection.doc(this.getUID()).update({
+        data: { vip: util },
+      });
+      return stats.updated === 1;
     } catch (e) {
       console.error(e);
       return false;

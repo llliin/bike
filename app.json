@@ -8,7 +8,10 @@
     "pages/riding-record/riding-record",
     "pages/opening/opening",
     "pages/bike-riding/bike-riding",
-    "pages/deposit/deposit"
+    "pages/deposit/deposit",
+    "pages/pay/pay",
+    "pages/record-detail/record-detail",
+    "pages/vip/vip"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "time-clock": "/components/time-clock/time-clock"
+  }
+}

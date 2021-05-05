@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "order-preview": "/components/order-preview/order-preview"
+  }
+}

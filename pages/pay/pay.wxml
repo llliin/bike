@@ -1,0 +1,24 @@
+<view class="order-payed" wx:if="{{orderData}}">
+  <icon class="icon-box-img" type="success" size="93" color="#1678ff"></icon>
+  <text>订单已结算</text>
+  <order-preview order-id="{{orderData._id}}"
+                 money="{{orderData.expense}}"
+                 payment="{{orderData.status}}"
+                 start="{{orderData.startTime}}"
+                 end="{{orderData.endTime}}"
+                 start-lat="{{orderData.start.lat}}"
+                 end-lat="{{orderData.end.lat}}"
+                 start-lng="{{orderData.start.lng}}"
+                 end-lng="{{orderData.end.lng}}"></order-preview>
+  <view style="padding:0 30rpx;box-sizing:border-box;">
+    <button class="theme-button" bind:tap="toIndex">返回首页</button>
+  </view>
+</view>
+<view class="paying" wx:else>
+  <text>正在为您结算订单</text>
+  <view class="pay-loading">
+    <view class="weui-primary-loading weui-primary-loading_brand" style="font-size:60px">
+      <view class="weui-primary-loading__dot"></view>
+    </view>
+  </view>
+</view>

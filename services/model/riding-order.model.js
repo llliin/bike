@@ -2,9 +2,9 @@ import BaseModel from './base.model';
 import GeoModel from './geo.model';
 
 /**
- * 骑行记录
+ * 骑行订单
  */
-export default class RidingRecordModel extends BaseModel {
+export default class RidingOrderModel extends BaseModel {
   /**
    * 骑行的起始位置
    * @type {GeoModel}
@@ -15,7 +15,7 @@ export default class RidingRecordModel extends BaseModel {
    * 骑行的结束位置
    * @type {GeoModel}
    */
-  start = new GeoModel();
+  end = new GeoModel();
 
   /**
    * 关联的用户Id
@@ -46,4 +46,16 @@ export default class RidingRecordModel extends BaseModel {
    * @type {number}
    */
   expense = 0;
+
+  /**
+   * 订单状态，0=骑行中；1=已完成；
+   * @type {number}
+   */
+  status = 0;
+
+  /**
+   * 支付方式，0=未结算；1=余额结算；2=VIP卡；
+   * @type {number}
+   */
+  payment = 0;
 }

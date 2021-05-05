@@ -1,0 +1,36 @@
+<view class="weui-form-preview__bd">
+  <view class="weui-form-preview__item">
+    <label class="weui-form-preview__label">订单号</label>
+    <text class="weui-form-preview__value">{{orderNo}}</text>
+  </view>
+  <view class="weui-form-preview__item">
+    <label class="weui-form-preview__label">订单金额</label>
+    <text class="weui-form-preview__value">￥{{money}}</text>
+  </view>
+  <view class="weui-form-preview__item">
+    <label class="weui-form-preview__label">支付方式</label>
+    <text class="weui-form-preview__value">{{payType}}</text>
+  </view>
+  <view class="weui-form-preview__item">
+    <label class="weui-form-preview__label">起始时间</label>
+    <text class="weui-form-preview__value">{{startTime}}</text>
+  </view>
+  <view class="weui-form-preview__item">
+    <label class="weui-form-preview__label">结束时间</label>
+    <text class="weui-form-preview__value">{{endTime}}</text>
+  </view>
+  <view class="weui-form-preview__item">
+    <label class="weui-form-preview__label">骑行时长</label>
+    <view class="weui-form-preview__value">
+      <time-clock time="{{time}}"></time-clock>
+    </view>
+  </view>
+  <view class="weui-form-preview__item">
+    <label class="weui-form-preview__label">起始地点</label>
+    <text class="weui-form-preview__value">{{startPosition}}</text>
+  </view>
+  <view class="weui-form-preview__item">
+    <label class="weui-form-preview__label">结束地点</label>
+    <text class="weui-form-preview__value">{{endPosition}}</text>
+  </view>
+</view>

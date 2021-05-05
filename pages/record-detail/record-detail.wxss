@@ -1,0 +1,41 @@
+.paying {
+  width: 100%;
+  padding: 100rpx 0;
+}
+
+.paying text {
+  display: block;
+  width: 100%;
+  font-size: 32rpx;
+  color: #000;
+  text-align: center;
+  margin-bottom: 100rpx;
+}
+
+.pay-loading {
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  margin: 0 auto;
+}
+
+.icon-box-img {
+  display: block;
+  margin-top: 100rpx;
+}
+
+.order-payed {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  font-size: 32rpx;
+  background: #FFF;
+}
+
+.order-payed > text {
+  display: block;
+  font-size: 32rpx;
+  color: #333;
+  margin: 50rpx 0;
+  text-align: center;
+}

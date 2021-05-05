@@ -29,5 +29,5 @@ export default class UserModel extends BaseModel {
    * 用户骑的单车id
    * @type {BikeModel._id}
    */
-  ridingBikeId = null;
+  ridingOrderId = null;
 }
