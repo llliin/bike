@@ -3,7 +3,7 @@
   <text>订单已结算</text>
   <order-preview order-id="{{orderData._id}}"
                  money="{{orderData.expense}}"
-                 payment="{{orderData.status}}"
+                 payment="{{orderData.payment}}"
                  start="{{orderData.startTime}}"
                  end="{{orderData.endTime}}"
                  start-lat="{{orderData.start.lat}}"

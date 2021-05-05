@@ -46,6 +46,7 @@ Page({
       this.setData({ isRiding: true });
       return true;
     }
+    this.setData({ isRiding: false });
     return false;
   },
 

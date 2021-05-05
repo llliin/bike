@@ -1,2 +1,18 @@
-<!--pages/feedback/feedback.wxml-->
-<text>pages/feedback/feedback.wxml</text>
+<form bind:submit="submit">
+  <view class="form weui-cells">
+    <picker mode="selector" range="{{range}}" bind:change="change">
+      <view class="weui-cell weui-cell_access">
+        <view class="weui-cell__bd">{{select >=0 ? range[select] : '请选择反馈类型'}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access" />
+      </view>
+    </picker>
+    <view class="weui-cell weui-cell_access" bind:tap="scan">
+      <view class="weui-cell__bd">{{no || '请扫描单车二维码'}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access" />
+    </view>
+    <view class="weui-cell content">
+      <textarea name="content" maxlength="{{200}}" placeholder="反馈内容"/>
+    </view>
+  </view>
+  <button class="theme-button" form-type="submit">提交</button>
+</form>

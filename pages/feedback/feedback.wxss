@@ -1,1 +1,28 @@
-/* pages/feedback/feedback.wxss */
+@import '/style/weui.wxss';
+
+page {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.form {
+  display: block;
+  width: 100%;
+  background: #fff;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+
+.content {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+textarea {
+  width: 100%;
+  padding: 15rpx;
+  box-sizing: border-box;
+  border: 1px #eee solid;
+}

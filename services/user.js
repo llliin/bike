@@ -95,17 +95,16 @@ class UserService extends Service {
     try {
       // 获取用户的当前余额和会员状态
       const { data } = await this.collection
-        .doc(this.getUID())
         .field({ vip: true, balance: true })
         .get();
-      const isVip = data.vip >= new Date();
+      const isVip = data[0].vip >= new Date();
       // 更新用户数据字段
       const { stats } = await this.collection.doc(this.getUID()).update({
         data: {
           trip: this.cmd.inc(1),
           ridingOrderId: null,
           // 会员到期时间需要大于当前时间
-          balance: isVip ? data.balance : this.cmd.inc(-expense),
+          balance: isVip ? data[0].balance : this.cmd.inc(-expense),
         },
       });
       return stats.updated === 1 ? { payment: isVip ? 2 : 1 } : false;

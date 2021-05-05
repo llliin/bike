@@ -1,66 +1,60 @@
-// pages/feedback/feedback.js
+import helper from '../../utils/helper';
+import { noSign } from '../../config';
+import feedbackService from '../../services/feedback';
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    // 最后一项永远是其它问题
+    range: [
+      '把手损坏',
+      '座椅损坏',
+      '轮胎损坏',
+      '链条损坏',
+      '车筐损坏',
+      '其它问题',
+    ],
+    select: -1,
+    no: null,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  change(e) {
+    this.setData({ select: Number(e.detail.value) });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  scan() {
+    helper.$load('等待扫描结果');
+    wx.scanCode({
+      onlyFromCamera: true,
+      success: async res => {
+        helper.$close();
+        if (res.result.includes(noSign)) {
+          this.setData({ no: res.result.replace(noSign, '') });
+        } else {
+          helper.$alert({ title: '提示', content: '请扫描ZZL单车二维码' });
+        }
+      },
+      fail: () => {
+        helper.$close();
+      },
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  async submit(ev) {
+    const content = ev.detail.value.content || '';
+    if (this.data.select < 0) {
+      return helper.$alert({ content: '请选择问题类型' });
+    }
+    if (!this.data.no) {
+      return helper.$alert({ content: '请扫描单车二维码' });
+    }
+    helper.$load('提交中..');
+    const res = await feedbackService.create(
+      this.data.range[this.data.select],
+      this.data.no,
+      this.data.select === this.data.range - 1,
+      content
+    );
+    helper.$close();
+    if (res) {
+      await helper.$alert({ content: '反馈成功' });
+      wx.navigateBack();
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
-})
+});

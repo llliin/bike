@@ -71,6 +71,23 @@ class BikeService extends Service {
       return false;
     }
   }
+
+  /**
+   * 标记损坏
+   * @param no {string} 单车编号
+   * @return {Promise<boolean>}
+   */
+  async bikeBroken(no) {
+    try {
+      const { stats } = await this.collection
+        .where({ bikeNo: no })
+        .update({ data: { bikeState: 0 } });
+      return stats.updated === 1;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
 }
 
 const bikeService = new BikeService();
