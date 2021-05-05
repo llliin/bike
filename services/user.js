@@ -130,6 +130,22 @@ class UserService extends Service {
       return false;
     }
   }
+
+  /**
+   * 余额充值
+   * @return {Promise<boolean>}
+   */
+  async charge(num) {
+    try {
+      const { stats } = await this.collection.doc(this.getUID()).update({
+        data: { balance: this.cmd.inc(num) },
+      });
+      return stats.updated === 1;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
 }
 
 const userService = new UserService();

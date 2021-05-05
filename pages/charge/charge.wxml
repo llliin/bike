@@ -1,4 +1,12 @@
 <view class="weui-flex balance">
   <text>当前余额：</text>
-  <text>0</text>
+  <text class="theme-color__text">￥{{balance}}</text>
 </view>
+
+<form bind:submit="charge">
+  <label class="weui-flex charge">
+    <text>￥</text>
+    <input name="v" value="{{value}}" class="charge-input" confirm-type="done" type="number" focus="{{true}}" maxlength="{{5}}" />
+  </label>
+  <button class="theme-button" form-type="submit">充值</button>
+</form>
