@@ -3,6 +3,7 @@ import UserMarker from '../../map/user-marker';
 import bikeService from '../../services/bike';
 import BikeMarker from '../../map/bike-marker';
 import GeoModel from '../../services/model/geo.model';
+import helper from '../../utils/helper';
 
 const app = getApp();
 
@@ -69,7 +70,11 @@ Component({
     },
 
     toFeedback() {
-      wx.navigateTo({ url: '/pages/feedback/feedback' });
+      if(app.globalData.userInfo.ridingOrderId===null){
+        wx.navigateTo({ url: '/pages/feedback/feedback' });
+      }else{
+        helper.$toast('请先结束骑行！');
+      }
     },
   },
 });
