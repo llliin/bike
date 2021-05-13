@@ -28,7 +28,7 @@ Page({
     }
   }else if(ev.detail.target.id==="re"){
     const value = Number(ev.detail.value.v);
-    if (value& this.data.balance >=value) {
+    if (value!=0&this.data.balance >=value) {
       helper.$load('退款中', true);
       const res = await userService.refund(value);
       if (res) {
@@ -43,6 +43,7 @@ Page({
     }
     else {
       helper.$toast('请输入退款金额');
+      return;
     }
   }
   },
