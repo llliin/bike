@@ -23,11 +23,6 @@
           "pathName": "pages/vip/vip",
           "query": "orderId=cbddf0af608ab8d204a473d54e482b81",
           "scene": null
-        },
-        {
-          "name": "pages/charge/charge",
-          "pathName": "pages/charge/charge",
-          "scene": null
         }
       ]
     }

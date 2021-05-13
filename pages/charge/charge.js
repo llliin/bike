@@ -43,7 +43,6 @@ Page({
     }
     else {
       helper.$toast('请输入退款金额');
-      return;
     }
   }
   },
