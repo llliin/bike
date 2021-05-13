@@ -90,8 +90,8 @@ Page({
   },
 
   checkBalance() {
-    if (app.globalData.userInfo.balance <= 0) {
-      helper.$confirm({ content: '您的余额不足，请先进行充值' }).then(e => {
+    if (app.globalData.userInfo.balance <=0) {
+      helper.$confirm({ content: '您的余额不足，请先进行充值.' }).then(e => {
         if (e) wx.navigateTo({ url: '/pages/charge/charge' });
       });
       return false;

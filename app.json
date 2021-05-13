@@ -12,7 +12,8 @@
     "pages/pay/pay",
     "pages/record-detail/record-detail",
     "pages/vip/vip",
-    "pages/charge/charge"
+    "pages/charge/charge",
+    "pages/explain/explain"
   ],
   "window": {
     "backgroundTextStyle": "light",

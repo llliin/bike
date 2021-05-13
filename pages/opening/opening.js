@@ -11,7 +11,7 @@ Page({
     await sleep(2000);
     // 获取单车信息
     const bikeInfo = await bikeService.getBikeInfo(option.no);
-    if (bikeInfo.bikeState === 1) {
+    if (bikeInfo.bikeState === 1 | bikeInfo.bikeState === 2) {
       const order = await userService.startRiding(
         bikeInfo._id,
         option.lat,
@@ -26,8 +26,11 @@ Page({
         await helper.$alert({ content: '此单车暂时不可以骑行呦~' });
         wx.navigateBack();
       }
-    } else {
+    } else if(bikeInfo.bikeState === 0){
       await helper.$alert({ content: '此单车已损坏了哦~' });
+      wx.navigateBack();
+    }else{
+      await helper.$alert({ content: '此单车离线中哦~' });
       wx.navigateBack();
     }
   },

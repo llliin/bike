@@ -132,12 +132,25 @@ class UserService extends Service {
 
   /**
    * 余额充值
+   * 余额退款
    * @return {Promise<boolean>}
    */
   async charge(num) {
     try {
       const { stats } = await this.collection.doc(this.getUID()).update({
         data: { balance: this.cmd.inc(num) },
+      });
+      return stats.updated === 1;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  async refund(num) {
+    try {
+      const { stats } = await this.collection.doc(this.getUID()).update({
+        data: { balance: this.cmd.inc(-num) },
       });
       return stats.updated === 1;
     } catch (e) {

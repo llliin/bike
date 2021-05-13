@@ -21,6 +21,7 @@ Page({
   async loadState() {
     const data = await syncUserInfo();
     this.setData({ hasDeposit: data.deposit, loading: false });
+    
   },
 
   /**
@@ -32,12 +33,14 @@ Page({
     this.setData({ loading: true });
     const state = ev.target.dataset.state;
     const s = state ? '缴纳' : '退还';
-    const r = await userService.deposit(state);
-    if (r) {
+    
+    if (app.globalData.userInfo.balance >= 0) {
+      await userService.deposit(state);
       helper.$toast(`押金${s}成功！`, 'success', false, 2000);
       app.globalData.userInfo.deposit = state;
-    } else {
+    } else if(app.globalData.userInfo.balance <= 0) {
       helper.$toast(`押金${s}失败！`, 'error', false, 2000);
+
     }
     this.loadState();
   },

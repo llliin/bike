@@ -39,3 +39,6 @@ page{
   color: #222;
   border-bottom: 1rpx #eee solid;
 }
+.theme-button{
+  margin-bottom: 10rpx;
+}

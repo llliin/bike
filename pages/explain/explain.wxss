@@ -1,0 +1,14 @@
+/* pages/explain/explain.wxss */
+view{
+  font-size: 30rpx;
+  text-indent: 2em;
+}
+.hd{
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 700;
+  text-indent: 0em;
+}
+.bd1{
+  font-weight: 700;
+}

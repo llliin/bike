@@ -8,5 +8,6 @@
     <text>￥</text>
     <input name="v" value="{{value}}" class="charge-input" confirm-type="done" type="number" focus="{{true}}" maxlength="{{5}}" />
   </label>
-  <button class="theme-button" form-type="submit">充值</button>
+  <button class="theme-button" form-type="submit" id="ch">充值</button>
+  <button class="theme-button" form-type="submit" id="re">退款</button>
 </form>
