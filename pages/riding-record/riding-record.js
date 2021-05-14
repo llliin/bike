@@ -1,5 +1,5 @@
 import ridingOrderService from '../../services/riding-order';
-import { formatDuration } from '../../utils/timeUtil';
+import { formatDate, formatDuration, formatTime } from '../../utils/timeUtil';
 
 Page({
   page: 1,
@@ -24,6 +24,7 @@ Page({
           res.map(e => ({
             ...e,
             duration: formatDuration(e.startTime, e.endTime),
+            ridTime:formatTime(e.endTime)
           }))
         ),
         page: ++this.page,
@@ -32,7 +33,7 @@ Page({
         wx.stopPullDownRefresh();
       }
     );
-  },
+  },    
 
   toDetail(ev) {
     wx.navigateTo({
