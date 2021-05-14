@@ -1,7 +1,7 @@
 <view class="card month" bind:tap="select" data-type="{{1}}">
   <view class="weui-flex card-title">
     <text class="weui-flex__item card-type">月卡</text>
-    <text class="card-price">￥5.9</text>
+    <text class="card-price">￥{{money[0]}}</text>
   </view>
   <text class="card-tips">免费骑行一个月（开通后{{cardsDate[0]}}到期）</text>
   <image class="bg-bike" src="/images/bike.svg" />
@@ -10,7 +10,7 @@
 <view class="card season" bind:tap="select" data-type="{{2}}">
   <view class="weui-flex card-title">
     <text class="weui-flex__item card-type">季卡</text>
-    <text class="card-price">￥15.9</text>
+    <text class="card-price">￥{{money[1]}}</text>
   </view>
   <text class="card-tips">免费骑行三个月（开通后{{cardsDate[1]}}到期）</text>
   <image class="bg-bike" src="/images/bike.svg" />
@@ -19,7 +19,7 @@
 <view class="card year" bind:tap="select" data-type="{{3}}">
   <view class="weui-flex card-title">
     <text class="weui-flex__item card-type">年卡</text>
-    <text class="card-price">￥57.9</text>
+    <text class="card-price">￥{{money[2]}}</text>
   </view>
   <text class="card-tips">免费骑行一年（开通后{{cardsDate[2]}}到期）</text>
   <image class="bg-bike" src="/images/bike.svg" />

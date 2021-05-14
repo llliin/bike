@@ -6,6 +6,8 @@ let app = getApp();
 Page({
   data: {
     cardsDate: [0, 0, 0],
+    money:[10,25,80],
+    num:""
   },
   onLoad() {
     this.syncCardState();
@@ -14,8 +16,16 @@ Page({
   async select(ev) {
     helper.$load('开通中...', true);
     const util = this.getVipDate(ev.currentTarget.dataset.type);
-    const res = await userService.setVip(util);
-    if (res) {
+    if (ev.currentTarget.dataset.type==1){
+  this.data.num=0
+  }else if(ev.currentTarget.dataset.type==2){
+    this.data.num=1
+  }else{
+    this.data.num=2
+  };
+    if (app.globalData.userInfo.balance >= this.data.money[this.data.num]) {
+      const res = await userService.setVip(util,this.data.money[this.data.num]);
+      if(res){
       helper.$close();
       app.globalData.userInfo.vip = util;
       helper.$alert({
@@ -23,6 +33,9 @@ Page({
         content: `骑行卡将在${formatDate(util)}到期`,
       });
       this.syncCardState();
+    }
+    }else{
+      helper.$toast('余额不足');
     }
   },
 

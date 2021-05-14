@@ -118,10 +118,10 @@ class UserService extends Service {
    * 开通Vip
    * @return {Promise<boolean>}
    */
-  async setVip(util = new Date()) {
+  async setVip(util = new Date(),numb) {
     try {
       const { stats } = await this.collection.doc(this.getUID()).update({
-        data: { vip: util },
+        data: { vip: util , balance: this.cmd.inc(-numb) },
       });
       return stats.updated === 1;
     } catch (e) {

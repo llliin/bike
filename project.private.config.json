@@ -39,6 +39,18 @@
         {
           "name": "pages/feedback/feedback",
           "pathName": "pages/feedback/feedback",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/vip/vip",
+          "pathName": "pages/vip/vip",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/wallet/wallet",
+          "pathName": "pages/wallet/wallet",
           "scene": null
         }
       ]

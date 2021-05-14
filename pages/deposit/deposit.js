@@ -39,7 +39,7 @@ Page({
       helper.$toast(`押金${s}成功！`, 'success', false, 2000);
       app.globalData.userInfo.deposit = state;
     } else if(app.globalData.userInfo.balance <= 0) {
-      helper.$toast(`押金${s}失败！`, 'error', false, 2000);
+      helper.$toast(`押金${s}失败！请先补足余额`, 'error', false, 2000);
 
     }
     this.loadState();
