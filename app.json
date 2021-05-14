@@ -13,7 +13,8 @@
     "pages/record-detail/record-detail",
     "pages/vip/vip",
     "pages/charge/charge",
-    "pages/explain/explain"
+    "pages/explain/explain",
+    "pages/feedback-record/feedback-record"
   ],
   "window": {
     "backgroundTextStyle": "light",

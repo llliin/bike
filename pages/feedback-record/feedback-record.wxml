@@ -1,15 +1,14 @@
 <view class="page__bd">
-  <view>骑行总时长：{{allTime}}</view>
-  <view class="weui-form-preview" wx:for="{{list}}" wx:key="index" bind:tap="toDetail" data-id="{{item._id}}">
+  <view class="weui-form-preview" wx:for="{{list}}" wx:key="index"  data-id="{{item._id}}">
     <view class="weui-form-preview__hd">
       <view class="weui-form-preview__item">
-        <label class="weui-form-preview__label">骑行时长 {{item.duration}}</label>
-        <text class="weui-form-preview__value">2元</text>
+        <label class="weui-form-preview__label">报修类型： {{item.type}}</label>
+        <text class="weui-form-preview__value">{{item.bikeno}}</text>
       </view>
     </view>
     <view class="weui-form-preview__bd">
       <view class="weui-form-preview__item">
-        <label class="weui-form-preview__label">{{item.ridTime}}</label>
+        <label class="weui-form-preview__label">{{item.recordTime}}</label>
       </view>
     </view>
   </view>

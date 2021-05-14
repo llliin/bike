@@ -55,6 +55,8 @@ Page({
     if (res) {
       await helper.$alert({ content: '反馈成功' });
       wx.navigateBack();
+    }else{
+      return helper.$alert({ content: '反馈成功' });
     }
   },
 });

@@ -27,6 +27,18 @@
         {
           "name": "pages/riding-record/riding-record",
           "pathName": "pages/riding-record/riding-record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/feedback-record/feedback-record",
+          "pathName": "pages/feedback-record/feedback-record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/feedback/feedback",
+          "pathName": "pages/feedback/feedback",
           "scene": null
         }
       ]

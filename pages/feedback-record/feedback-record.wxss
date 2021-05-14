@@ -1,0 +1,30 @@
+@import '../../app.wxss';
+
+page {
+  --weui-BG-2: #f3f3f3;
+}
+
+.page__bd {
+  font-size: 30rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.weui-form-preview:active {
+  background: #eee;
+}
+.weui-form-preview {
+  width: 100%;
+  border-radius: 8rpx;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.weui-form-preview::before,
+.weui-form-preview::after {
+  display: none;
+}
+.weui-form-preview__value{
+  font-size: 30rpx !important;
+}

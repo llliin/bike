@@ -1,4 +1,4 @@
-import ridingOrderService from '../../services/riding-order';
+import feedbackService from '../../services/feedback';
 import { formatDuration, formatTime } from '../../utils/timeUtil';
 
 Page({
@@ -6,7 +6,6 @@ Page({
   data: {
     loadState: 0,
     list: [],
-    allTime:0
   },
   onLoad() {
     this.loadData();
@@ -17,15 +16,16 @@ Page({
    */
   async loadData() {
     this.setData({ loadState: 1 });
-    const res = await ridingOrderService.myOrder(this.page);
+    const res = await feedbackService.myOrder(this.page);
     this.setData(
       {
         loadState: res.length === 0 ? 2 : 0,
         list: this.data.list.concat(
           res.map(e => ({
             ...e,
-            duration: formatDuration(e.startTime, e.endTime),
-            ridTime:formatTime(e.endTime),       
+            type: (e.type),
+            recordTime:formatTime(e.time),     
+            bikeno:(e.no)  
           }))
         ),
         page: ++this.page,
@@ -36,11 +36,6 @@ Page({
     );    
   }, 
 
-  toDetail(ev) {
-    wx.navigateTo({
-      url: `/pages/record-detail/record-detail?id=${ev.currentTarget.dataset.id}`,
-    });
-  },
   onPullDownRefresh() {
     this.data.list = [];
     this.page = 1;
