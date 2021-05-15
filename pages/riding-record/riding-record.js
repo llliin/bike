@@ -6,9 +6,10 @@ Page({
   data: {
     loadState: 0,
     list: [],
-    allTime:0
+    allTime: 0,
   },
   onLoad() {
+    this.loadAllTime();
     this.loadData();
   },
 
@@ -25,8 +26,8 @@ Page({
           res.map(e => ({
             ...e,
             duration: formatDuration(e.startTime, e.endTime),
-            ridTime:formatTime(e.endTime), 
-            money:(e.expense),
+            ridTime: formatTime(e.endTime),
+            money: e.expense,
           }))
         ),
         page: ++this.page,
@@ -34,8 +35,19 @@ Page({
       () => {
         wx.stopPullDownRefresh();
       }
-    );    
-  }, 
+    );
+  },
+
+  async loadAllTime() {
+    const times = await ridingOrderService.getAllTime();
+    const base = new Date('2000 00:00:00');
+    this.setData({
+      allTime: formatDuration(
+        base,
+        new Date(new Date(base.valueOf()).setMilliseconds(times))
+      ),
+    });
+  },
 
   toDetail(ev) {
     wx.navigateTo({

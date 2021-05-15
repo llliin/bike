@@ -90,11 +90,27 @@ class RidingOrderService extends Service {
    */
   async myOrder(page = 1) {
     const { data } = await this.collection
-      .orderBy('start', 'desc')
+      .orderBy('startTime', 'desc')
       .skip(15 * (page - 1))
       .limit(15)
       .get();
     return data?.length ? data.map(e => new RidingOrderModel().connect(e)) : [];
+  }
+
+  /**
+   * 获取所有时长
+   * @return {Promise<number>} 毫秒数
+   */
+  async getAllTime() {
+    const { list } = await this.collection
+      .aggregate()
+      .project({
+        _id: false,
+        d: this.cmd.aggregate.subtract(['$endTime', '$startTime']),
+      })
+      .group({ _id: null, total: this.cmd.aggregate.sum('$d') })
+      .end();
+    return list[0].total;
   }
 }
 
