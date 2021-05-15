@@ -25,7 +25,8 @@ Page({
           res.map(e => ({
             ...e,
             duration: formatDuration(e.startTime, e.endTime),
-            ridTime:formatTime(e.endTime),       
+            ridTime:formatTime(e.endTime), 
+            money:(e.expense),
           }))
         ),
         page: ++this.page,

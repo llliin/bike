@@ -25,3 +25,13 @@ page {
 .weui-form-preview::after {
   display: none;
 }
+.allTime{
+  position: sticky;
+  top: 0rpx;
+  background-color: 	#DCDCDC;
+  font-size: 30rpx;
+  text-align: center;
+  padding: 20rpx 0;
+  margin-bottom:20rpx;
+  z-index: 999;
+}

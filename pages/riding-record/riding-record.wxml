@@ -1,10 +1,10 @@
 <view class="page__bd">
-  <view>骑行总时长：{{allTime}}</view>
+  <view class="allTime">骑行总时长：{{allTime}}</view>
   <view class="weui-form-preview" wx:for="{{list}}" wx:key="index" bind:tap="toDetail" data-id="{{item._id}}">
     <view class="weui-form-preview__hd">
       <view class="weui-form-preview__item">
         <label class="weui-form-preview__label">骑行时长 {{item.duration}}</label>
-        <text class="weui-form-preview__value">2元</text>
+        <text class="weui-form-preview__value">{{item.money}}元</text>
       </view>
     </view>
     <view class="weui-form-preview__bd">

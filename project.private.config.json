@@ -51,6 +51,12 @@
         {
           "name": "pages/wallet/wallet",
           "pathName": "pages/wallet/wallet",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/riding-record/riding-record",
+          "pathName": "pages/riding-record/riding-record",
           "scene": null
         }
       ]
