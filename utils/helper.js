@@ -196,6 +196,7 @@ class CommonHelper {
         url: `https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=${mapKey}`,
         success: res => {
           r(res.data);
+          // console.log(res.data);
         },
         fail: err => {
           j(err);

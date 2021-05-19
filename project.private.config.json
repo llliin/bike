@@ -57,6 +57,12 @@
         {
           "name": "pages/riding-record/riding-record",
           "pathName": "pages/riding-record/riding-record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/bike-riding/bike-riding",
+          "pathName": "pages/bike-riding/bike-riding",
           "scene": null
         }
       ]

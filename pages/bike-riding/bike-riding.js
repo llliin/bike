@@ -74,6 +74,11 @@ Page({
    * 结束骑行
    */
   async finishRiding() {
+    // console.log(this.data.lat);
+    // console.log(this.data.lng);
+    const pos = await helper.$getPositionInfo(this.data.lat, this.data.lng);
+    // console.log(pos);
+    if(pos.result.ad_info.city_code==156130100){
     helper.$load('', true);
     const res = await ridingOrderService.finishOrder(
       this.data.id,
@@ -88,6 +93,11 @@ Page({
         content: '订单结束失败，请稍后尝试',
       });
     }
+  }else{
+    helper.$alert({
+      content:'请把车辆停在指定范围内(石家庄市)'
+    });
+  }
   },
 
   /**
