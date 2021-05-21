@@ -28,4 +28,23 @@ export default class BikeModel extends BaseModel {
    * @type {number}
    */
   bikeState = 1;
+
+    /**
+   * 单车被骑行次数
+   * @type {number}
+   */
+  bikeNumber = 0;
+
+  /**
+   * 单车被骑行总时间
+   * @type {number}
+   */
+  bikeAllTime = 0;
+
+    /**
+   * 单车被骑行总时间
+   * @type {string}
+   */
+  bikeTime = "";
+
 }

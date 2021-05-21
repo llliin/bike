@@ -28,7 +28,7 @@ class FeedbackService extends Service {
   }
 
     /**
-   * 获取我的订单
+   * 获取我的报修记录
    * @param page {number}
    * @return {Promise<FeedbackModel[]>}
    */

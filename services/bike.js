@@ -1,5 +1,6 @@
 import Service from './service';
 import BikeModel from './model/bike.model';
+import { formatDuration } from '../utils/timeUtil';
 
 class BikeService extends Service {
   constructor() {
@@ -58,13 +59,34 @@ class BikeService extends Service {
   /**
    * 结束骑行
    * @param bikeId {string} 单车Id
+   * @param times {number} 单车使用时间
    * @return {Promise<boolean>}
    */
-  async finishRiding(bikeId) {
+  async finishRiding(bikeId,times) {
     try {
       const { stats } = await this.collection
         .doc(bikeId)
-        .update({ data: { bikeState: 1 } });
+        .update({ 
+          data: { bikeState: 1, bikeNumber: this.cmd.inc(1),bikeAllTime: this.cmd.inc(times) } 
+        })
+      return stats.updated === 1;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  // 获取时间（毫秒）转换为时分秒
+  async finishTimes(bikeId){
+    try {
+      const bikeContent = await bikeService.getBikeInfoById(bikeId)
+      const bikeTime =formatDuration(0,bikeContent.bikeAllTime)
+      // console.log(bikeTime)
+      const { stats } = await this.collection
+        .doc(bikeId)
+        .update({ 
+          data: { bikeTime:bikeTime } 
+        })
       return stats.updated === 1;
     } catch (e) {
       console.error(e);

@@ -67,7 +67,8 @@ class RidingOrderService extends Service {
       // 更新用户状态和单车状态
       const res = await Promise.all([
         userService.finishRiding(expense),
-        bikeService.finishRiding(bikeId),
+        bikeService.finishRiding(bikeId,times),
+        bikeService.finishTimes(bikeId),
       ]);
       if (!res.includes(false)) {
         // 更新订单数据
